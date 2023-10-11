@@ -1,134 +1,115 @@
-// // DATATYPES
+//  CONTROL FLOW
+const addresses = [
+  "123 Main St",
+  "456 Elm St",
+  "789 Oak St",
+  "101 Pine St",
+  "121 Maple St",
+  "141 Birch St",
+];
+// 1. For Loop
+// for (let i = 0; i < addresses.length; i++) {
+//   console.log(`I am delivering pizza to ${addresses[i]}`);
+// }
 
-// // Numbers
-// let num = 1032.27827272;
-// console.log(num.toFixed(2), typeof num);
+// 2. While Loop
+// let i = 0;
+// while (i < addresses.length) {
+//   console.log(`I am delivering pizza to ${addresses[i]}`);
+//   i++;
+// }
 
-// // Strings
-// let myName = "John";
-// let address = "123 Main St";
+// 3. Do-While Loop
+// let i = 10;
+// do {
+//   console.log(i);
+//   i++;
+// } while (i < 10);
 
-// console.log(myName);
-// console.log(address);
+// 4. For Each Loop
+// addresses.forEach((address) => {
+//   console.log(`Delivering pizza to ${address}`);
+// });
 
-// console.log(myName + " lives at " + address);
-// console.log(`${myName} lives at ${address}`);
+// 5. If Statement
+// const hasCustomerPaid = false;
+// if (hasCustomerPaid) {
+//   console.log("Delivering pizza");
+// }
 
-// // Boolean
-// let isTrue = true;
-// let isFalse = false;
+// const userName = "";
+// const age = 12;
+// if (userName && age >= 18) {
+//   console.log("Welcome");
+// }
 
-// console.log(isTrue, typeof isTrue);
-// console.log(isFalse, typeof isFalse);
+// 6. Else and Else If
+// if (userName && age >= 18) {
+//   console.log("Welcome");
+// } else {
+//   console.log("Sorry, you are not old enough");
+// }
+// if (userName && age >= 18) {
+//   console.log("Welcome");
+// } else if (userName && age < 18) {
+//   console.log("Sorry, you are not old enough");
+// } else {
+//   console.log("Sorry, we don't know you");
+// }
 
-// // Undefined
-// let u;
-// console.log(u, typeof u);
+// 7. Switch Statement
+// const grade = "A";
+// switch (grade) {
+//   case "A":
+//     console.log("Excellent");
+//     break;
+//   case "B":
+//     console.log("Good Job");
+//     break;
+//   case "C":
+//     console.log("Not bad!");
+//     break;
+//   case "D":
+//     console.log("You can do better!");
+//     break;
+//   case "F":
+//     console.log("You Failed");
+//     break;
+//   default:
+//     console.log("Invalid grade");
+// }
 
-// // Null
-// let n = null;
-// console.log(n, typeof n);
+// 8. Break and Continue
+// for (let i = 0; i < addresses.length; i++) {
+//   if (addresses[i] === "101 Pine St") {
+//     continue;
+//   }
+//   console.log(`I am delivering pizza to ${addresses[i]}`);
+// }
 
-// // Arrays
-// let arrOfNums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+// 9. Try Catch Finally
 
-// let arrOfStrings = ["Maestro", "lifetechfacts"];
+// try {
+//   // Code that might throw an error
+//   const result = undefinedVariable / 10; // This will throw an error
+//   console.log(result); // This will not be executed
+// } catch (error) {
+//   // Code to handle the error
+//   alert("An error occurred", error.message);
+//   console.error("An error occurred", error.message);
+// } finally {
+//   console.log("Next thing to do in the app");
+// }
 
-// console.log(arrOfNums);
-// console.log(arrOfStrings);
+// 10. Variable Scope
+let userName = "Maestro";
 
-// arrOfNums[1] = 20;
+if (userName) {
+  let userName = "Goku";
+  let prince = "Vegeta";
+  console.log("Inside code block", userName);
+  console.log("Inside code block", prince);
+}
 
-// console.log(arrOfNums);
-
-// // Objects
-// let person = {
-//   name: "John",
-//   age: 30,
-//   address: "123 Main St",
-// };
-
-// console.log(
-//   `${person.name} is ${person.age} years old and lives at ${person.address}`
-// );
-
-// person.name = "Jane";
-// person.address = "456 Main St";
-// person.age = 40;
-
-// console.log(
-//   `${person.name} is ${person.age} years old and lives at ${person.address}`
-// );
-
-// JAVASCRIPT OPERATORS
-// let x = 10;
-// let y = 20;
-// let a = 5;
-// let b = 2;
-// let j = "Jane";
-// let k = "5";
-
-// Arithmetic Operators
-
-// console.log(x + y);
-// console.log(x - y);
-// console.log(x * y);
-// console.log(x ** y);
-// console.log(x / y);
-// console.log(a % b);
-// x++;
-// x++;
-// console.log(x);
-
-// x--;
-// console.log(x);
-// console.log(x++);
-// console.log(x--);
-
-// Assignment Operators
-// let x2 = x;
-// x2 += 2;
-// x2 -= 2;
-// x2 /= 2;
-
-// console.log(x2);
-
-// Comparison Operators
-// console.log(a !== k);
-
-// Logical Operators
-// let age = 18;
-// let country = "Nigeriasss";
-// console.log(age >= 18 && country === "Nigeria");
-// console.log(age >= 18 || country === "Nigeria");
-// console.log(!(age >= 18 || country === "Nigeria"));
-
-// ORDER OF OPERATIONS
-/* BEDMAS is an acronym that represents the order of operations in mathematics and stands for:
-
-    Brackets: Evaluate expressions inside parentheses or brackets first. This includes any innermost brackets or parentheses.
-
-    Exponents: Evaluate expressions with exponents (or powers) next. This involves raising a number to a power, such as squaring or cubing.
-
-    Division and Multiplication: Perform multiplication and division operations from left to right. These operations have the same level of precedence and are executed before addition and subtraction.
-
-    Addition and Subtraction: Finally, perform addition and subtraction operations from left to right. Like multiplication and division, these operations have the same level of precedence and are executed last. */
-// console.log(2 * (3 + 4));
-
-// Type Conversion
-// let x = 10;
-// let y = "5";
-// let result = x + y;
-// console.log(result, typeof result);
-// parseInt("42");
-// 42;
-// String(29292929);
-// ("29292929");
-// Boolean(29292929);
-// true;
-// Boolean(0);
-// false;
-// Boolean(1);
-// true;
-// Boolean("sgsgsgsgsgsgsgsgsgsg");
-// true;
+console.log("Outside code block", userName);
+// console.log("Outside code block", prince);
