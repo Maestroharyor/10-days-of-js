@@ -1,115 +1,113 @@
-//  CONTROL FLOW
-const addresses = [
-  "123 Main St",
-  "456 Elm St",
-  "789 Oak St",
-  "101 Pine St",
-  "121 Maple St",
-  "141 Birch St",
-];
-// 1. For Loop
-// for (let i = 0; i < addresses.length; i++) {
-//   console.log(`I am delivering pizza to ${addresses[i]}`);
+// Functions
+
+// Function Declaration
+// function greet(name = "Maestro") {
+//   // Function body
+//   console.log("Good morning", name);
 // }
 
-// 2. While Loop
-// let i = 0;
-// while (i < addresses.length) {
-//   console.log(`I am delivering pizza to ${addresses[i]}`);
-//   i++;
-// }
+// greet("John");
+// greet();
 
-// 3. Do-While Loop
-// let i = 10;
-// do {
-//   console.log(i);
-//   i++;
-// } while (i < 10);
+// Function Expression
+// const greet2 = function (name = "Maestro") {
+//   console.log("Good afternoon", name);
+// };
 
-// 4. For Each Loop
-// addresses.forEach((address) => {
-//   console.log(`Delivering pizza to ${address}`);
-// });
+// greet2("John");
+// greet2();
 
-// 5. If Statement
-// const hasCustomerPaid = false;
-// if (hasCustomerPaid) {
-//   console.log("Delivering pizza");
-// }
+// Arrow Function
+// const greet3 = (name = "Maestro") => {
+//   console.log("Good evening", name);
+// };
 
-// const userName = "";
-// const age = 12;
-// if (userName && age >= 18) {
-//   console.log("Welcome");
-// }
+// greet3("John");
+// greet3();
+// const multiply = (num1, num2) => {
+//   console.log(num1 * num2);
+// };
 
-// 6. Else and Else If
-// if (userName && age >= 18) {
-//   console.log("Welcome");
-// } else {
-//   console.log("Sorry, you are not old enough");
-// }
-// if (userName && age >= 18) {
-//   console.log("Welcome");
-// } else if (userName && age < 18) {
-//   console.log("Sorry, you are not old enough");
-// } else {
-//   console.log("Sorry, we don't know you");
-// }
+// multiply(2, 3);
 
-// 7. Switch Statement
-// const grade = "A";
-// switch (grade) {
-//   case "A":
-//     console.log("Excellent");
-//     break;
-//   case "B":
-//     console.log("Good Job");
-//     break;
-//   case "C":
-//     console.log("Not bad!");
-//     break;
-//   case "D":
-//     console.log("You can do better!");
-//     break;
-//   case "F":
-//     console.log("You Failed");
-//     break;
-//   default:
-//     console.log("Invalid grade");
-// }
+// IIFE (Immediately Invoked Function Expression)
+// (function () {
+//   console.log("Fetch data from the server");
+//   console.log("Welcome message to user");
+// })();
 
-// 8. Break and Continue
-// for (let i = 0; i < addresses.length; i++) {
-//   if (addresses[i] === "101 Pine St") {
-//     continue;
+// Arguments and Parameters
+const addresses = ["123 Main St", "456 Elm St", "789 Oak St"];
+
+// const deliverPizza = (addresses = []) => {
+//   if (addresses.length) {
+//     for (let i = 0; i < addresses.length; i++) {
+//       console.log(`Delivering pizza to ${addresses[i]}`);
+//     }
+//   } else {
+//     console.log("No addresses provided");
 //   }
-//   console.log(`I am delivering pizza to ${addresses[i]}`);
-// }
+// };
 
-// 9. Try Catch Finally
+// deliverPizza(addresses);
+// deliverPizza();
 
-// try {
-//   // Code that might throw an error
-//   const result = undefinedVariable / 10; // This will throw an error
-//   console.log(result); // This will not be executed
-// } catch (error) {
-//   // Code to handle the error
-//   alert("An error occurred", error.message);
-//   console.error("An error occurred", error.message);
-// } finally {
-//   console.log("Next thing to do in the app");
-// }
+// Returning Values
+// 1. Gives back the result of a computation to save in a variable
+// 2. Stops the function
+// const multiply1 = (num1, num2) => {
+//   return;
+//   console.log(num1 * num2);
+// };
 
-// 10. Variable Scope
-let userName = "Maestro";
+// const multiply2 = (num1, num2) => {
+//   return num1 * num2;
+// };
 
-if (userName) {
-  let userName = "Goku";
-  let prince = "Vegeta";
-  console.log("Inside code block", userName);
-  console.log("Inside code block", prince);
+// const variable1 = multiply1(2, 3);
+// const variable2 = multiply2(2, 3);
+// const variable3 = multiply2(2, 5);
+
+// console.log(variable1);
+// console.log(variable2);
+// console.log(variable3);
+
+// Functions vs Methods
+// const person = {
+//   name: "Alice",
+//   greet: function () {
+//     return `Hello, ${this.name}!`;
+//   },
+// };
+
+// console.log(person.greet());
+
+// const personName = "Alice";
+// console.log(personName.toUpperCase());
+
+// Callback Functions
+
+// const deliverPizza = (address) => {
+//   console.log(`Delivering pizza to ${address}`);
+//   console.log("Delivered");
+// };
+// addresses.forEach(deliverPizza);
+
+// setTimeout(() => {
+//   console.log("Delivered");
+// }, 3000);
+
+// Higher Order Functions
+function multiplyBy(factor) {
+  return function (number) {
+    return number * factor;
+  };
 }
 
-console.log("Outside code block", userName);
-// console.log("Outside code block", prince);
+const double = multiplyBy(2);
+const triple = multiplyBy(3);
+const quadruple = multiplyBy(4);
+
+console.log(double(10));
+console.log(triple(10));
+console.log(quadruple(10));
