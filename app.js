@@ -1,113 +1,104 @@
-// Functions
+// Object Literals
+// const user = {
+//   firstName: "John",
+//   lastName: "Doe",
+//   age: 30,
+// };
 
-// Function Declaration
-// function greet(name = "Maestro") {
-//   // Function body
-//   console.log("Good morning", name);
+//Accessing Object Values
+// const key = "firstName";
+// console.log(user[key]);
+// console.log(user.lastName);
+// console.log(user.age);
+
+// Add, Change or remove items in objects
+// user.firstName = "Jane";
+// user.lastName = "Uzumaki";
+// user.isLoggedIn = false;
+
+// delete user.age;
+// console.log(user);
+
+// Object Destructuring
+// const { age, ...userWithoutAge } = user;
+// console.log(userWithoutAge);
+
+// Shorthand Property Assignment
+// const userWithAgeOnly = { age };
+// console.log(userWithAgeOnly);
+
+// Looping through an object
+// console.log(Object.keys(user));
+// console.log(Object.values(user));
+// console.log(Object.entries(user));
+
+// for (const [key, value] of Object.entries(user)) {
+//   console.log(`${key}: ${value}`);
 // }
 
-// greet("John");
-// greet();
+// for (const key of Object.keys(user)) {
+//   console.log(key, user[key]);
+// }
 
-// Function Expression
-// const greet2 = function (name = "Maestro") {
-//   console.log("Good afternoon", name);
-// };
+// for (const key in user) {
+//   console.log(key, user[key]);
+// }
 
-// greet2("John");
-// greet2();
-
-// Arrow Function
-// const greet3 = (name = "Maestro") => {
-//   console.log("Good evening", name);
-// };
-
-// greet3("John");
-// greet3();
-// const multiply = (num1, num2) => {
-//   console.log(num1 * num2);
-// };
-
-// multiply(2, 3);
-
-// IIFE (Immediately Invoked Function Expression)
-// (function () {
-//   console.log("Fetch data from the server");
-//   console.log("Welcome message to user");
-// })();
-
-// Arguments and Parameters
-const addresses = ["123 Main St", "456 Elm St", "789 Oak St"];
-
-// const deliverPizza = (addresses = []) => {
-//   if (addresses.length) {
-//     for (let i = 0; i < addresses.length; i++) {
-//       console.log(`Delivering pizza to ${addresses[i]}`);
-//     }
-//   } else {
-//     console.log("No addresses provided");
-//   }
-// };
-
-// deliverPizza(addresses);
-// deliverPizza();
-
-// Returning Values
-// 1. Gives back the result of a computation to save in a variable
-// 2. Stops the function
-// const multiply1 = (num1, num2) => {
-//   return;
-//   console.log(num1 * num2);
-// };
-
-// const multiply2 = (num1, num2) => {
-//   return num1 * num2;
-// };
-
-// const variable1 = multiply1(2, 3);
-// const variable2 = multiply2(2, 3);
-// const variable3 = multiply2(2, 5);
-
-// console.log(variable1);
-// console.log(variable2);
-// console.log(variable3);
-
-// Functions vs Methods
-// const person = {
-//   name: "Alice",
-//   greet: function () {
-//     return `Hello, ${this.name}!`;
+// Methods
+// const posts = [
+//   {
+//     title: "Post 1",
+//     content: "This is post 1",
+//   },
+//   {
+//     title: "Post 2",
+//     content: "This is post 2",
+//   },
+// ];
+// const user = {
+//   firstName: "John",
+//   lastName: "Doe",
+//   age: 30,
+//   isLoggedIn: false,
+//   posts,
+//   login() {
+//     this.isLoggedIn = true;
+//     console.log("User Logged IN");
+//   },
+//   logout: function () {
+//     this.isLoggedIn = false;
+//     console.log("User Logged OUT");
+//   },
+//   showPosts: function () {
+//     this.posts.forEach((post) => {
+//       console.log(post);
+//     });
 //   },
 // };
 
-// console.log(person.greet());
+// console.log(user);
+// user.login();
+// user.showPosts();
+// console.log(user);
 
-// const personName = "Alice";
-// console.log(personName.toUpperCase());
+//Built in JavaScript Objects
+//Date Object
+// const date = new Date();
+// console.log(Date());
+// console.log(date.getDate());
+// console.log(date.getFullYear());
+// console.log(date.getMonth() + 1);
 
-// Callback Functions
+//Math Object
+// console.log(Math.PI);
+// console.log(Math.abs(-10));
+// console.log(Math.round(3.4));
+// console.log(Math.ceil(2.2));
+// console.log(Math.min(20, 1, 58));
+// console.log(Math.random());
 
-// const deliverPizza = (address) => {
-//   console.log(`Delivering pizza to ${address}`);
-//   console.log("Delivered");
-// };
-// addresses.forEach(deliverPizza);
+// const generateRandomNumber = () => Math.ceil(Math.random() * 100);
 
-// setTimeout(() => {
-//   console.log("Delivered");
-// }, 3000);
-
-// Higher Order Functions
-function multiplyBy(factor) {
-  return function (number) {
-    return number * factor;
-  };
-}
-
-const double = multiplyBy(2);
-const triple = multiplyBy(3);
-const quadruple = multiplyBy(4);
-
-console.log(double(10));
-console.log(triple(10));
-console.log(quadruple(10));
+// for (let i = 0; i < 100; i++) {
+//   console.log(generateRandomNumber());
+// }
