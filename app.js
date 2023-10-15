@@ -1,104 +1,159 @@
-// Object Literals
-// const user = {
-//   firstName: "John",
-//   lastName: "Doe",
-//   age: 30,
-// };
+//OBJECT ORIENTED PROGRAMMING
 
-//Accessing Object Values
-// const key = "firstName";
-// console.log(user[key]);
-// console.log(user.lastName);
-// console.log(user.age);
+const userOne = {
+  firstName: "John",
+  lastName: "Doe",
+  age: 30,
+  isLoggedIn: false,
+  posts: [],
+  login() {
+    this.isLoggedIn = true;
+    console.log(`${this.firstName} Logged in`);
+  },
+  logout: function () {
+    this.isLoggedIn = false;
+    console.log(`${this.firstName} Logged out`);
+  },
+  showPosts: function () {
+    this.posts.forEach((post) => {
+      console.log(post);
+    });
+  },
+};
 
-// Add, Change or remove items in objects
-// user.firstName = "Jane";
-// user.lastName = "Uzumaki";
-// user.isLoggedIn = false;
+// Class Constructions and Instances
 
-// delete user.age;
-// console.log(user);
-
-// Object Destructuring
-// const { age, ...userWithoutAge } = user;
-// console.log(userWithoutAge);
-
-// Shorthand Property Assignment
-// const userWithAgeOnly = { age };
-// console.log(userWithAgeOnly);
-
-// Looping through an object
-// console.log(Object.keys(user));
-// console.log(Object.values(user));
-// console.log(Object.entries(user));
-
-// for (const [key, value] of Object.entries(user)) {
-//   console.log(`${key}: ${value}`);
-// }
-
-// for (const key of Object.keys(user)) {
-//   console.log(key, user[key]);
-// }
-
-// for (const key in user) {
-//   console.log(key, user[key]);
-// }
-
-// Methods
-// const posts = [
-//   {
-//     title: "Post 1",
-//     content: "This is post 1",
-//   },
-//   {
-//     title: "Post 2",
-//     content: "This is post 2",
-//   },
-// ];
-// const user = {
-//   firstName: "John",
-//   lastName: "Doe",
-//   age: 30,
-//   isLoggedIn: false,
-//   posts,
-//   login() {
-//     this.isLoggedIn = true;
-//     console.log("User Logged IN");
-//   },
-//   logout: function () {
+// class User {
+//   constructor(firstName, lastName, age = 18, posts = []) {
+//     this.firstName = firstName;
+//     this.lastName = lastName;
+//     this.age = age;
+//     this.posts = posts;
 //     this.isLoggedIn = false;
-//     console.log("User Logged OUT");
-//   },
-//   showPosts: function () {
-//     this.posts.forEach((post) => {
-//       console.log(post);
-//     });
-//   },
-// };
-
-// console.log(user);
-// user.login();
-// user.showPosts();
-// console.log(user);
-
-//Built in JavaScript Objects
-//Date Object
-// const date = new Date();
-// console.log(Date());
-// console.log(date.getDate());
-// console.log(date.getFullYear());
-// console.log(date.getMonth() + 1);
-
-//Math Object
-// console.log(Math.PI);
-// console.log(Math.abs(-10));
-// console.log(Math.round(3.4));
-// console.log(Math.ceil(2.2));
-// console.log(Math.min(20, 1, 58));
-// console.log(Math.random());
-
-// const generateRandomNumber = () => Math.ceil(Math.random() * 100);
-
-// for (let i = 0; i < 100; i++) {
-//   console.log(generateRandomNumber());
+//   }
 // }
+
+// const user = new User("John", "Doe", 22, []);
+// const userNew = new User("Jane", "Doe", 32, ["Post 1", "Post 2"]);
+// console.log(user);
+// console.log(userNew);
+
+// New Keyword
+// const date = new Date();
+// 1. It creates a new empty object{}
+// 2. It binds the value of ‘this’ to the new empty object
+//3. It calls the constructor function to ‘build’ the object
+
+// Class Methods and Method Chaining
+class User {
+  constructor(firstName, lastName, age = 18, posts = []) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.age = age;
+    this.posts = posts;
+    this.isLoggedIn = false;
+    this.level = 0;
+  }
+  login() {
+    this.isLoggedIn = true;
+    console.log(`${this.firstName} Logged in`);
+    return this;
+  }
+  logout() {
+    this.isLoggedIn = false;
+    console.log(`${this.firstName} Logged out`);
+    return this;
+  }
+  showPosts() {
+    this.posts.forEach((post) => {
+      console.log(post);
+    });
+    return this;
+  }
+
+  increaseLevel() {
+    this.level++;
+    return this;
+  }
+}
+
+// const user = new User("John", "Doe", 22, ["Post 1", "Post 2", "Post 3"]);
+
+// console.log(user);
+// user
+//   .login()
+//   .increaseLevel()
+//   .increaseLevel()
+//   .increaseLevel()
+//   .increaseLevel()
+//   .showPosts();
+// console.log(user);
+
+// Class Inheritance
+// class Admin extends User {
+//   constructor() {
+//     this.isAdmin = true;
+//     this.userRole = "admin";
+//   }
+//   removePost(postId) {
+//     console.log(`Post with post id: ${postId} removed`);
+//   }
+// }
+
+// const adminUser = new Admin("John", "Doe", 22, ["Post 1", "Post 2", "Post 3"]);
+// adminUser.removePost("Post 1");
+// console.log(adminUser);
+
+// Super
+// class Admin extends User {
+//   constructor(firstName, lastName, age, posts, adminNiceName) {
+//     super(firstName, lastName, age, posts);
+//     this.isAdmin = true;
+//     this.userRole = "admin";
+//     this.adminNiceName = adminNiceName;
+//   }
+//   removePost(postId) {
+//     console.log(`Post with post id: ${postId} removed`);
+//   }
+// }
+
+// const normalUser = new User("John", "Doe", 22, ["Post 1", "Post 2", "Post 3"]);
+// normalUser.increaseLevel();
+// const adminUser = new Admin(
+//   "John",
+//   "Doe",
+//   22,
+//   ["Post 1", "Post 2", "Post 3"],
+//   "JohnD"
+// );
+// // adminUser.removePost("Post 1");
+// console.log(normalUser);
+// console.log(adminUser);
+
+// Polymorphism
+// class Admin extends User {
+//   constructor(firstName, lastName, age, posts, adminNiceName) {
+//     super(firstName, lastName, age, posts);
+//     this.isAdmin = true;
+//     this.userRole = "admin";
+//     this.adminNiceName = adminNiceName;
+//   }
+//   removePost(postId) {
+//     console.log(`Post with post id: ${postId} removed`);
+//   }
+//   increaseLevel() {
+//     console.log("DO something different");
+//     this.level++;
+//     return this;
+//   }
+// }
+
+// const adminUser = new Admin(
+//   "John",
+//   "Doe",
+//   22,
+//   ["Post 1", "Post 2", "Post 3"],
+//   "JohnD"
+// );
+// adminUser.increaseLevel();
+// console.log(adminUser);
