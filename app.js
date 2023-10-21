@@ -1,159 +1,63 @@
-//OBJECT ORIENTED PROGRAMMING
+// - Interacting with the browser
+// - The Dom Explained
 
-const userOne = {
-  firstName: "John",
-  lastName: "Doe",
-  age: 30,
-  isLoggedIn: false,
-  posts: [],
-  login() {
-    this.isLoggedIn = true;
-    console.log(`${this.firstName} Logged in`);
-  },
-  logout: function () {
-    this.isLoggedIn = false;
-    console.log(`${this.firstName} Logged out`);
-  },
-  showPosts: function () {
-    this.posts.forEach((post) => {
-      console.log(post);
-    });
-  },
-};
+// - Querying the DOM
+// - Query Selector
+// - Query Selector All
+// - Get Element by ClassName
+// - Get Element by Tag Name
 
-// Class Constructions and Instances
+// - Adding & Changing Page Content
+// - Changing text inside element
+// - Changing HTML inside element
 
-// class User {
-//   constructor(firstName, lastName, age = 18, posts = []) {
-//     this.firstName = firstName;
-//     this.lastName = lastName;
-//     this.age = age;
-//     this.posts = posts;
-//     this.isLoggedIn = false;
-//   }
-// }
+// - Adding & Removing Styles, Classes and attributes
+// - Changing and Toggling Styles
+// - Changing and Toggling Attributes
 
-// const user = new User("John", "Doe", 22, []);
-// const userNew = new User("Jane", "Doe", 32, ["Post 1", "Post 2"]);
-// console.log(user);
-// console.log(userNew);
+// - Events
+// - Click Events
+// - Event Bubbling and delegation
 
-// New Keyword
-// const date = new Date();
-// 1. It creates a new empty object{}
-// 2. It binds the value of ‘this’ to the new empty object
-//3. It calls the constructor function to ‘build’ the object
+// To-do List
+const taskForm = document.querySelector(".task_form");
+const taskList = document.querySelector(".task_lists");
 
-// Class Methods and Method Chaining
-class User {
-  constructor(firstName, lastName, age = 18, posts = []) {
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.age = age;
-    this.posts = posts;
-    this.isLoggedIn = false;
-    this.level = 0;
-  }
-  login() {
-    this.isLoggedIn = true;
-    console.log(`${this.firstName} Logged in`);
-    return this;
-  }
-  logout() {
-    this.isLoggedIn = false;
-    console.log(`${this.firstName} Logged out`);
-    return this;
-  }
-  showPosts() {
-    this.posts.forEach((post) => {
-      console.log(post);
-    });
-    return this;
+taskForm.addEventListener("submit", function (e) {
+  e.preventDefault();
+  const taskText = taskForm.querySelector("input").value;
+
+  if (taskText.trim() === "") {
+    alert("Task description cannot be empty.");
+    return;
   }
 
-  increaseLevel() {
-    this.level++;
-    return this;
+  const newtaskNode = `<div class="task">
+          <p>${taskText}</p>
+          <button class="delete">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
+              />
+            </svg>
+          </button>
+        </div>`;
+
+  taskList.innerHTML += newtaskNode;
+  taskForm.reset();
+});
+
+taskList.addEventListener("click", (e) => {
+  if (e.target.classList.contains("delete")) {
+    e.target.parentElement.remove();
   }
-}
-
-// const user = new User("John", "Doe", 22, ["Post 1", "Post 2", "Post 3"]);
-
-// console.log(user);
-// user
-//   .login()
-//   .increaseLevel()
-//   .increaseLevel()
-//   .increaseLevel()
-//   .increaseLevel()
-//   .showPosts();
-// console.log(user);
-
-// Class Inheritance
-// class Admin extends User {
-//   constructor() {
-//     this.isAdmin = true;
-//     this.userRole = "admin";
-//   }
-//   removePost(postId) {
-//     console.log(`Post with post id: ${postId} removed`);
-//   }
-// }
-
-// const adminUser = new Admin("John", "Doe", 22, ["Post 1", "Post 2", "Post 3"]);
-// adminUser.removePost("Post 1");
-// console.log(adminUser);
-
-// Super
-// class Admin extends User {
-//   constructor(firstName, lastName, age, posts, adminNiceName) {
-//     super(firstName, lastName, age, posts);
-//     this.isAdmin = true;
-//     this.userRole = "admin";
-//     this.adminNiceName = adminNiceName;
-//   }
-//   removePost(postId) {
-//     console.log(`Post with post id: ${postId} removed`);
-//   }
-// }
-
-// const normalUser = new User("John", "Doe", 22, ["Post 1", "Post 2", "Post 3"]);
-// normalUser.increaseLevel();
-// const adminUser = new Admin(
-//   "John",
-//   "Doe",
-//   22,
-//   ["Post 1", "Post 2", "Post 3"],
-//   "JohnD"
-// );
-// // adminUser.removePost("Post 1");
-// console.log(normalUser);
-// console.log(adminUser);
-
-// Polymorphism
-// class Admin extends User {
-//   constructor(firstName, lastName, age, posts, adminNiceName) {
-//     super(firstName, lastName, age, posts);
-//     this.isAdmin = true;
-//     this.userRole = "admin";
-//     this.adminNiceName = adminNiceName;
-//   }
-//   removePost(postId) {
-//     console.log(`Post with post id: ${postId} removed`);
-//   }
-//   increaseLevel() {
-//     console.log("DO something different");
-//     this.level++;
-//     return this;
-//   }
-// }
-
-// const adminUser = new Admin(
-//   "John",
-//   "Doe",
-//   22,
-//   ["Post 1", "Post 2", "Post 3"],
-//   "JohnD"
-// );
-// adminUser.increaseLevel();
-// console.log(adminUser);
+});
