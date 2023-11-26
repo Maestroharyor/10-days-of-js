@@ -1,0 +1,15 @@
+{
+  "name": "10-days-of",
+  "version": "1.0.0",
+  "description": "10 Days of JavaScript Course Files",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.3.5"
+  }
+}
